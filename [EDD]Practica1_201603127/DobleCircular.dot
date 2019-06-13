@@ -1,0 +1,23 @@
+digraph {
+ rankdir=TB;
+	NodeCompra_0->NodeCompra_2[constraint=false]; 
+	NodeCompra_0->NodeCompra_2[dir=back, constraint=false]; 
+
+ 	NodeCompra_0[shape=box,style=filled,color=slategray1  , label = "-Cliente 3
+ -Carreta 66 "] 
+	NodeCompra_2->NodeCompra_3[constraint=false]; 
+	NodeCompra_2->NodeCompra_3[dir=back, constraint=false]; 
+
+ 	NodeCompra_2[shape=box,style=filled,color=slategray1  , label = "-Cliente 1
+ -Carreta 13 "] 
+	NodeCompra_3->NodeCompra_5[constraint=false]; 
+	NodeCompra_3->NodeCompra_5[dir=back, constraint=false]; 
+
+ 	NodeCompra_3[shape=box,style=filled,color=slategray1  , label = "-Cliente 2
+ -Carreta 44 "] 
+	NodeCompra_5->NodeCompra_0[constraint=false]; 
+	NodeCompra_5->NodeCompra_0[dir=back, constraint=false]; 
+
+ 	NodeCompra_5[shape=box,style=filled,color=slategray1  , label = "-Cliente 6
+ -Carreta 66 "] 
+}

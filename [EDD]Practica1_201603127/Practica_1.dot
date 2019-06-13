@@ -1,0 +1,90 @@
+digraph {
+subgraph Pilas_Carretas{
+graph[pad="0.1", nodesep="0.15", ranksep="1"];
+ node [shape=none]
+ rankdir=LR;
+ car1 [label=<
+ <table border="0" cellborder="1" cellspacing="0">
+<tr><td>14</td></tr>
+</table>>];
+Nodo_Tcarretas [shape=box, label = "Carretas"]
+Nodo_Tcarretas -> car1
+graph[pad="0.1", nodesep="0.15", ranksep="1"];
+ node [shape=none]
+ rankdir=LR;
+ car2 [label=<
+ <table border="0" cellborder="1" cellspacing="0">
+<tr><td>12</td></tr>
+</table>>];
+Nodo_Tcarretas [shape=box, label = "Carretas"]
+Nodo_Tcarretas -> car2
+}
+subgraph Compras{
+	NodeCompra_0->NodeCompra_7[constraint=false]; 
+	NodeCompra_0->NodeCompra_7[dir=back, constraint=false]; 
+
+ 	NodeCompra_0[shape=box,style=filled,color=chartreuse1  , label = "-Cliente 1
+ -Carreta 10 "] 
+	NodeCompra_7->NodeCompra_11[constraint=false]; 
+	NodeCompra_7->NodeCompra_11[dir=back, constraint=false]; 
+
+ 	NodeCompra_7[shape=box,style=filled,color=chartreuse1  , label = "-Cliente 8
+ -Carreta 13 "] 
+	NodeCompra_11->NodeCompra_13[constraint=false]; 
+	NodeCompra_11->NodeCompra_13[dir=back, constraint=false]; 
+
+ 	NodeCompra_11[shape=box,style=filled,color=chartreuse1  , label = "-Cliente 12
+ -Carreta 9 "] 
+	NodeCompra_13->NodeCompra_14[constraint=false]; 
+	NodeCompra_13->NodeCompra_14[dir=back, constraint=false]; 
+
+ 	NodeCompra_13[shape=box,style=filled,color=chartreuse1  , label = "-Cliente 14
+ -Carreta 6 "] 
+	NodeCompra_14->NodeCompra_15[constraint=false]; 
+	NodeCompra_14->NodeCompra_15[dir=back, constraint=false]; 
+
+ 	NodeCompra_14[shape=box,style=filled,color=chartreuse1  , label = "-Cliente 15
+ -Carreta 7 "] 
+	NodeCompra_15->NodeCompra_17[constraint=false]; 
+	NodeCompra_15->NodeCompra_17[dir=back, constraint=false]; 
+
+ 	NodeCompra_15[shape=box,style=filled,color=chartreuse1  , label = "-Cliente 16
+ -Carreta 1 "] 
+	NodeCompra_17->NodeCompra_18[constraint=false]; 
+	NodeCompra_17->NodeCompra_18[dir=back, constraint=false]; 
+
+ 	NodeCompra_17[shape=box,style=filled,color=chartreuse1  , label = "-Cliente 18
+ -Carreta 2 "] 
+	NodeCompra_18->NodeCompra_0[constraint=false]; 
+	NodeCompra_18->NodeCompra_0[dir=back, constraint=false]; 
+
+ 	NodeCompra_18[shape=box,style=filled,color=chartreuse1  , label = "-Cliente 19
+ -Carreta 3 "] 
+}
+subgraph Pago{
+	NodePagar_20->NodePagar_11; 
+
+ 	NodePagar_20[shape=box,style=filled,color=lightslateblue  , label = " Cliente 20"] 
+	NodePagar_11->NodePagar_17; 
+
+ 	NodePagar_11[shape=box,style=filled,color=lightslateblue  , label = " Cliente 11"] 
+
+ 	NodePagar_17[shape=box,style=filled,color=lightslateblue  , label = " Cliente 17"] 
+Nodo_Tcola2->NodePagar_20
+Nodo_Tcola2[shape = box, label = "Cola para pagar"]
+}
+subgraph Cajas{
+	NodeCaja_1->NodeCaja_2; 
+	NodeCaja_1->NodeCaja_2[dir=back]; 
+
+ 	NodeCaja_1[shape=box,style=filled,color=coral1  , label = "-Caja 1
+ -2 Turnos 
+ -Ocupado"] 
+
+ 	NodeCaja_2[shape=box,style=filled,color=coral1  , label = "-Caja 2
+ -3 Turnos 
+ -Ocupado"] 
+Nodo_Tcajas->NodeCaja_1
+Nodo_Tcajas[shape = box, label = "CAJAS"]
+}
+}

@@ -1,0 +1,11 @@
+digraph {
+ graph [pad="0.1", nodesep="0.15", ranksep="1"];
+ node [shape=none]
+ rankdir=LR;
+ Mat1 [label=<
+ <table border="0" cellborder="1" cellspacing="0">
+<tr><td>5</td></tr>
+<tr><td>2</td></tr>
+<tr><td>1</td></tr>
+</table>>];
+}

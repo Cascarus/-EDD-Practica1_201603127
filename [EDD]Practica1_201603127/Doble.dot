@@ -1,0 +1,19 @@
+digraph {
+ rankdir=LR;
+	NodeCaja_1->NodeCaja_2; 
+	NodeCaja_1->NodeCaja_2[dir=back]; 
+
+ 	NodeCaja_1[shape=box,style=filled,color=slategray1  , label = "-Caja 1
+ -2 Turnos 
+ -Desocupado"] 
+	NodeCaja_2->NodeCaja_3; 
+	NodeCaja_2->NodeCaja_3[dir=back]; 
+
+ 	NodeCaja_2[shape=box,style=filled,color=slategray1  , label = "-Caja 2
+ -1 Turnos 
+ -Desocupado"] 
+
+ 	NodeCaja_3[shape=box,style=filled,color=slategray1  , label = "-Caja 3
+ -3 Turnos 
+ -Desocupado"] 
+}

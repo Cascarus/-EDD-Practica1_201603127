@@ -1,0 +1,11 @@
+digraph {
+ rankdir=TB;
+	NodeCliente_3->NodeCliente_7; 
+
+ 	NodeCliente_3[shape=box,style=filled,color=slategray1  , label = " Cliente 3"] 
+	NodeCliente_7->NodeCliente_1; 
+
+ 	NodeCliente_7[shape=box,style=filled,color=slategray1  , label = " Cliente 7"] 
+
+ 	NodeCliente_1[shape=box,style=filled,color=slategray1  , label = " Cliente 1"] 
+}
