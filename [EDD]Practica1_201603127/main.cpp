@@ -26,6 +26,7 @@ void Graficar();
 void insertar();
 void Turno();
 string cadena(int numero);
+bool esNumero(string a);
 
 int main() {
 
@@ -89,9 +90,13 @@ int main() {
 
 void insertar() {
 	int opcion = 0;
-	int valor = 0;
+	int valor = 0, residuo=0;
 	int cliente, carreta, caja;
+	std::string linea;
+	
+
 	while (opcion != 7) {
+		bool repetir = true;
 		system("cls");
 		cout << "1. INSETAR CLIENTES" << endl;
 		cout << "2. INSERTAR CARRETILLAS" << endl;
@@ -105,50 +110,112 @@ void insertar() {
 
 		switch (opcion) {
 		case 1:
-			system("cls");
-			cout << "Cuantos clientes desea ingresar: ";
-			cin >> valor;
-			for (int a = 0; a < valor; a++) {
-				cout << "Ingrese un cliente (No se puden repetir).....";
-				cin >> cliente;
-				Cola_Espera.agregarCliente(cliente);
-				bitacora += "Llega cliente " + cadena(cliente) + " y se agrega a la cola de espera\n";
-			}
-			cout << "se ha ingresado " << valor << " clientes correctamente al sistema! "<< endl; //<< " en la pila " << car<< endl;
-			system("pause");
+
+			do {
+				system("cls");
+				cout << "Cuantos clientes desea ingresar: ";
+				cin>>linea;
+
+				if (esNumero(linea)) {
+					repetir = false;
+					valor = atoi(linea.c_str());
+					for (int a = 0; a < valor; a++) {
+						cout << "Ingrese un cliente (No se puden repetir).....";
+						cin>>linea;
+						
+						if (esNumero(linea)) {
+							cliente = atoi(linea.c_str());
+							Cola_Espera.agregarCliente(cliente);
+							bitacora += "Llega cliente " + cadena(cliente) + " y se agrega a la cola de espera\n";
+						}
+						else {
+							cout << "Debe ingresar solamente numeros positivos" << endl;
+							a--;
+						}
+						
+					}
+					cout << "se ha ingresado " << valor << " clientes correctamente al sistema! " << endl; //<< " en la pila " << car<< endl;
+
+				}else {
+					cout << "Debe ingresar solamente numeros positivos" << endl;
+				}
+
+				system("pause");
+			} while (repetir);
+			
 			break;
 
 		case 2:
-			system("cls");
-			cout << "Cuantas carretas desea ingresar: ";
-			cin >> valor;
-			for (int a = 0; a < valor; a++) {
-				cout << "Ingrese una carretilla (No se puden repetir).....";
-				cin >> carreta;
-				random = rand() % 2 + 1;
-				if (random == 1) {
-					carreta1.push(carreta);
+			do {
+				system("cls");
+				cout << "Cuantas carretas desea ingresar: ";
+				cin >> linea;
+
+				if (esNumero(linea)) {
+					repetir = false;
+					valor = atoi(linea.c_str());
+
+					for (int a = 0; a < valor; a++) {
+						cout << "Ingrese una carretilla (No se puden repetir).....";
+						cin >> linea;
+
+						if (esNumero(linea)) {
+							carreta = atoi(linea.c_str());
+							random = rand() % 2 + 1;
+							if (random == 1) {
+								carreta1.push(carreta);
+							}
+							else {
+								carreta2.push(carreta);
+							}
+							cout << "se han ingresado " << valor << " carretilla correctamente al sistema! " << endl; //<< " en la pila " << car<< endl;
+						}
+						else {
+							cout << "Debe ingresar solamente numeros positivos" << endl;
+							a--;
+						}
+						
+					}
+					
+				}else {
+					cout << "Debe ingresar solamente numeros positivos" << endl;
 				}
-				else {
-					carreta2.push(carreta);
-				}
-			}
-			cout << "se han ingresado " << valor << " carretilla correctamente al sistema! " << endl; //<< " en la pila " << car<< endl;
-			system("pause");
+				
+				system("pause");
+			} while (repetir);
+			
 			break;
 
 		case 3:
-			system("cls");
-			cout << "Cuantas cajas desea ingresar: ";
-			cin >> valor;
-			for (int a = 0; a < valor; a++) {
-				cout << "Ingrese una caja (No se puden repetir).....";
-				cin >> caja;
-				random = rand() % 10 + 1;
-				Cajas.agregar(caja,random);
-			}
-			cout << "se han ingresado " << valor << " cajas correctamente al sistema! " << endl; //<< " en la pila " << car<< endl;
-			system("pause");
+			do {
+				system("cls");
+				cout << "Cuantas cajas desea ingresar: ";
+				cin >> linea;
+
+				if (esNumero(linea)) {
+					repetir = false;
+					valor = atoi(linea.c_str());
+
+					for (int a = 0; a < valor; a++) {
+						cout << "Ingrese una caja (No se puden repetir).....";
+						cin >> linea;
+						if (esNumero(linea)) {
+							caja = atoi(linea.c_str());
+							random = rand() % 10 + 1;
+							Cajas.agregar(caja, random);
+							cout << "se han ingresado " << valor << " cajas correctamente al sistema! " << endl; //<< " en la pila " << car<< endl;
+						}
+						else {
+							cout << "Debe ingresar solamente numeros positivos" << endl;
+							a--;
+						}
+					}
+				} else {
+					cout << "Debe ingresar solamente numeros positivos" << endl;
+				}
+	
+				system("pause");
+			} while (repetir);
 			break;
 
 		case 4:
@@ -317,6 +384,33 @@ void Graficar() {
 
 	system("dot -Tpng Practica_1.dot -o Practica_1.png -Gcharset=latin1");
 	system("Practica_1.png");
+}
+
+bool esNumero(string linea) {
+	bool b = true;
+	int longitud = linea.size();
+
+	if (longitud == 0) {
+		return false;
+	} else if (longitud == 1  && !isdigit(linea[0])) {
+		return false;
+	}
+	else {
+		int i;
+		if (linea[0] == '+') {
+			i = 1;
+		} else {
+			i = 0;
+		}
+
+		while (i<longitud) {
+			if (!isdigit(linea[i])) {
+				return false;
+			}
+			i++;
+		}
+	}
+	return true;
 }
 
 string cadena(int n) {
